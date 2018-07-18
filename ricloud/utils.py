@@ -52,7 +52,7 @@ def print_message(message, colour='white'):
     Makes sure special characters are encoded properly (for example, emoticons
     in device names).
     """
-    puts(getattr(colored, colour)(utf8(message)))
+    puts(getattr(colored, colour)(message))
 
 
 def info_message(message):
