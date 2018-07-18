@@ -44,7 +44,7 @@ Options:
     --timeout=<timeout>     How long should we wait for tasks to complete, in seconds. (default: 600s or 10 minutes)
 
 """
-from __future__ import unicode_literals
+
 
 import json
 import logging
@@ -142,33 +142,33 @@ def main():
         api.setup()
 
         if(arguments["--list-services"]):
-            print json.dumps(api.list_services(), indent=2)
+            print(json.dumps(api.list_services(), indent=2))
         if(arguments["--list-subscriptions"]):
-            print json.dumps(api.list_subscriptions(arguments['<service>']), indent=2)
+            print(json.dumps(api.list_subscriptions(arguments['<service>']), indent=2))
         if(arguments["--subscribe-account"]):
-            print json.dumps(api.subscribe_account(
+            print(json.dumps(api.subscribe_account(
                 arguments['<username>'],
                 arguments['<password>'],
-                arguments['<service>']), indent=2)
+                arguments['<service>']), indent=2))
         if(arguments["--perform-2fa-challenge"]):
-            print json.dumps(api.perform_2fa_challenge(arguments['<account_id>'], arguments['<device_id>']), indent=2)
+            print(json.dumps(api.perform_2fa_challenge(arguments['<account_id>'], arguments['<device_id>']), indent=2))
         if(arguments["--submit-2fa-challenge"]):
-            print json.dumps(api.submit_2fa_challenge(arguments['<account_id>'], arguments['<code>']), indent=2)
+            print(json.dumps(api.submit_2fa_challenge(arguments['<account_id>'], arguments['<code>']), indent=2))
         if(arguments["--resubscribe-account"]):
-            print json.dumps(api.resubscribe_account(arguments['<account_id>'], arguments['<password>']), indent=2)
+            print(json.dumps(api.resubscribe_account(arguments['<account_id>'], arguments['<password>']), indent=2))
         if(arguments["--unsubscribe-account"]):
-            print json.dumps(api.unsubscribe_account(arguments['<account_id>']), indent=2)
+            print(json.dumps(api.unsubscribe_account(arguments['<account_id>']), indent=2))
         if(arguments["--list-devices"]):
-            print json.dumps(api.list_devices(arguments['<account_id>']), indent=2)
+            print(json.dumps(api.list_devices(arguments['<account_id>']), indent=2))
         if(arguments["--subscribe-device"]):
-            print json.dumps(api.subscribe_device(arguments['<account_id>'], arguments['<device_id>']), indent=2)
+            print(json.dumps(api.subscribe_device(arguments['<account_id>'], arguments['<device_id>']), indent=2))
         if(arguments["--unsubscribe-device"]):
-            print json.dumps(api.unsubscribe_device(arguments['<account_id>'], arguments['<device_id>']), indent=2)
+            print(json.dumps(api.unsubscribe_device(arguments['<account_id>'], arguments['<device_id>']), indent=2))
         if(arguments["--reset-subscription-since"]):
-            print json.dumps(api.reset_subscription_since(arguments['<account_id>'], arguments['<datetime>']), indent=2)
+            print(json.dumps(api.reset_subscription_since(arguments['<account_id>'], arguments['<datetime>']), indent=2))
 
     elif application_payload['mode'] == 'debug':
-        print json.dumps(LogHelper.get_status(), indent=2, sort_keys=True)
+        print(json.dumps(LogHelper.get_status(), indent=2, sort_keys=True))
 
 
 if __name__ == '__main__':

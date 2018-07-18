@@ -26,7 +26,7 @@ class ObjectStore(object):
                 time.sleep(5)
 
     def _pending_tasks(self):
-        return self.api.pending_tasks.keys() if self.api.pending_tasks else []
+        return list(self.api.pending_tasks.keys()) if self.api.pending_tasks else []
 
     @staticmethod
     def _check_status_integrity(status):
@@ -48,14 +48,14 @@ class ObjectStore(object):
         task_status_response.pop('success')
 
         retrieval_urls = []
-        for task_id, task_status in task_status_response.iteritems():
+        for task_id, task_status in task_status_response.items():
             if 'retrieval_endpoint' in task_status:
                 url = (task_id, task_status['retrieval_endpoint'])
                 retrieval_urls.append(url)
 
         if retrieval_urls:
             results = self._retrieve_result(retrieval_urls, self.api.token_header)
-            for task_id, task_result in results.iteritems():
+            for task_id, task_result in results.items():
                 self._set_result_in_memory(task_id, task_result)
 
     @staticmethod

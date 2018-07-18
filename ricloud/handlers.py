@@ -1,7 +1,7 @@
 import os
 import logging
 
-from cStringIO import StringIO
+from io import StringIO
 
 from .helpers import TemporaryFileHandler
 

@@ -95,7 +95,7 @@ class TestObjectStoreHandler(object):
         # Checks if we get pending tasks correctly from the dictionary _pending_tasks in the api
         handler = ObjectStore(mock_Api_object_store)
         handler.api.pending_tasks = {"pending1": "mock", "pending2": "mock"}
-        assert handler._pending_tasks() == handler.api.pending_tasks.keys()
+        assert handler._pending_tasks() == list(handler.api.pending_tasks.keys())
         handler.api.pending_tasks = {}
         assert handler._pending_tasks() == []
 
@@ -110,7 +110,7 @@ class TestObjectStoreHandler(object):
         mock_getter = mocker.patch(
             'ricloud.object_store.ObjectStore._retrieve_result')
         mock_getter.return_value = {
-            mock_Api_task_status().keys()[0]: response.content}
+            list(mock_Api_task_status().keys())[0]: response.content}
         handler = ObjectStore(mock_Api_object_store)
         handler._handle_pending_tasks(['mock_uuid'])
         mock_status.assert_called_once_with(['mock_uuid'])

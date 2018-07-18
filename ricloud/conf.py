@@ -1,10 +1,10 @@
 import os
 import logging
-import ConfigParser
+import configparser
 
 
 def get_config(config_name='ricloud.ini'):
-    config = ConfigParser.RawConfigParser()
+    config = configparser.RawConfigParser()
 
     path_to_config = os.path.join(os.path.dirname(__file__), config_name)  # Read defaults.
 

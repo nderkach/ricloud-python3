@@ -1,6 +1,6 @@
 """Primary API object. This handles communication with the ASApi enpoints."""
 
-from __future__ import absolute_import
+
 
 import time
 import logging
@@ -69,10 +69,10 @@ class Api(object):
         self._set_allowed_services_and_actions(info['services'])
 
     def allowed_services(self):
-        return self.services.keys()
+        return list(self.services.keys())
 
     def allowed_actions(self, service_name):
-        return self.services[service_name].keys()
+        return list(self.services[service_name].keys())
 
     def register_account(self, username, service):
         """Register an account against a service.

@@ -1,6 +1,6 @@
 """API object handling communication with asmaster, for use in manager mode."""
 
-from __future__ import absolute_import
+
 
 import requests
 
@@ -72,10 +72,10 @@ class AsmasterApi(object):
         self._set_allowed_services_and_actions(info['services'])
 
     def allowed_services(self):
-        return self.services.keys()
+        return list(self.services.keys())
 
     def allowed_actions(self, service_name):
-        return self.services[service_name].keys()
+        return list(self.services[service_name].keys())
 
     def list_services(self):
         """Asks for a list of all services."""

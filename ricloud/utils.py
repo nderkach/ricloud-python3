@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 
 import os
 import sys
@@ -42,7 +42,7 @@ def save_file_stream_to_target_path(file_stream, target_path, base_dir=OUTPUT_DI
 
 
 def utf8(message):
-    if isinstance(message, unicode):
+    if isinstance(message, str):
         message = message.encode('utf-8')
     return message
 

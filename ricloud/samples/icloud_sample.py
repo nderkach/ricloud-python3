@@ -129,14 +129,14 @@ class SampleICloudApplication(object):
     def prompt_devices_list(self):
         utils.prompt_message('Available devices:')
 
-        for index, (device_id, device_info) in enumerate(self.devices.iteritems()):
-            line = u"{index:2d}: {device_name} ({colour} {name} running iOS {ios_version})"
+        for index, (device_id, device_info) in enumerate(self.devices.items()):
+            line = "{index:2d}: {device_name} ({colour} {name} running iOS {ios_version})"
             line = line.format(index=index, **device_info)
             with indent(3):
                 utils.print_message(line)
 
         self.device_id = utils.prompt_for_choice(
-            self.devices.keys(),
+            list(self.devices.keys()),
             message='Please select a device index:'
         )
 
@@ -228,7 +228,7 @@ class SampleICloudApplication(object):
     @staticmethod
     def get_file_ids_to_download(data):
         files = []
-        for data_type, feed in data.iteritems():
+        for data_type, feed in data.items():
             if data_type == 'photos':
                 files += feed
             else:

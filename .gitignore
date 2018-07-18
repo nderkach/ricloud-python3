@@ -1,6 +1,7 @@
 **.pyc
 .cache
 .DS_Store
+*.bak
 
 # Ignore distribution side-products
 dist/

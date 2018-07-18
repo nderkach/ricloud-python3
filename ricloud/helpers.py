@@ -120,7 +120,7 @@ class TemporaryFileHandler(object):
         self._last_check = time_now
 
         to_delete = []
-        for handle_id, handle in self.handles.iteritems():  # These are ordered by time of insertion.
+        for handle_id, handle in self.handles.items():  # These are ordered by time of insertion.
             if self._is_expired(handle['timestamp']):
                 to_delete.append(handle_id)
             else:
