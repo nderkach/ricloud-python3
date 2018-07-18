@@ -197,7 +197,7 @@ class AsmasterDownloadFileHandler(AsmasterHandler):
         if len(file_id) == 40 and re.match("^[a-f0-9]+$", file_id):
             return file_id
         # prefix with "re_" to avoid name collision with real fileids
-        return "re_{}".format(hashlib.sha1(file_id).hexdigest())
+        return "re_{}".format(hashlib.sha1(file_id.encode('utf-8')).hexdigest())
 
 
 class AsmasterTask(Task):

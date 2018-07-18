@@ -6,7 +6,7 @@ from ricloud.conf import get_config, settings
 
 class TestsConfig(object):
 
-    @mock.patch('ricloud.conf.ConfigParser')
+    @mock.patch('ricloud.conf.configparser')
     def test_gets_right_paths(self, mock_ConfigParser, monkeypatch):
         env_path = '../path/on/env/ricloud.ini'
         monkeypatch.setenv('RICLOUD_CONF', env_path)

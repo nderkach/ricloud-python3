@@ -77,7 +77,7 @@ class TestAsmasterListener(object):
 
     @staticmethod
     def load_json_from_sql(sql_string):
-        return json.loads(sql_string.decode('string-escape').strip('"'))
+        return json.loads(sql_string.encode().decode('unicode-escape').strip('"'))
 
     def teardown(self):
         self.conn.close()
